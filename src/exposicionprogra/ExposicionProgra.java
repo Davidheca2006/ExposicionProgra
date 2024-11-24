@@ -6,30 +6,52 @@ package exposicionprogra;
 
 import java.util.Scanner;
 
-/**
- *
- * @author da_he
- */
 public class ExposicionProgra {
 
-    /**
-     * @param args the command line arguments
-     */
-    static Usuario user = new Usuario("",0,0,0);
-    static Usuario compu = new Usuario("Computadora",0,0,0);
     public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner scanner = new Scanner (System.in);
+        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Bienvenido, cual es su nombre: ");
-        String nombre = scanner.next();
-        user = new Usuario(nombre, 0, 0, 0);
-        boolean again=true;
-        do{
-            System.out.println("Turno de "+ nombre);
-            Usuario.tablerousuario();
+        String nombre = scanner.nextLine();
+        
+        Usuario user = new Usuario(nombre, 0, 0);
+        Usuario compu = new Usuario("Computadora", 0, 0);
+        
+        boolean again = true;
+        
+        do {
+            System.out.println(nombre + " este es tu tablero con tus barcos");
+            user.mostrar();
             
+            System.out.println("Turno de " + nombre);
+            compu.tablero.tablerom();
+            System.out.println("Ingresa tu fila (0-4) para hacer tu ataque: ");
+            int fila = scanner.nextInt();
+            System.out.println("Ingresa tu columna (0-4) para hacer tu ataque: ");
+            int columna = scanner.nextInt();
             
-        }while(again);
+            boolean acierto = compu.tablero.ataque(fila, columna, user);
+            
+            if (acierto) {
+                System.out.println("Acertaste.");
+            } else {
+                System.out.println("Fallaste! Ahora es el turno de la computadora.");
+                boolean aciertoCompu = user.tablero.ataque(fila, columna, compu);
+                if (aciertoCompu) {
+                    System.out.println("La computadora acerto.");
+                } else {
+                    System.out.println("La computadora fallo.");
+                }
+            }
+
+            if (user.win()) {
+                System.out.println(nombre + " has ganado.");
+                again = false;
+            } else if (compu.win()) {
+                System.out.println("La computadora ha ganado.");
+                again = false;
+            }
+
+        } while (again);
     }
-    
 }
