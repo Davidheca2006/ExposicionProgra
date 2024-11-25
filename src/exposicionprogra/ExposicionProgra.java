@@ -27,7 +27,6 @@ public class ExposicionProgra {
         boolean again = true;
         
         System.out.println();
-        compu.tablero.tablerou();
         
         do {
             
