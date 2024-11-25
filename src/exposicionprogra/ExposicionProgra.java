@@ -9,19 +9,26 @@ import java.util.Scanner;
 public class ExposicionProgra {
 
     public static void main(String[] args) {
+        int barcoshund=0;
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Bienvenido, cual es su nombre: ");
         String nombre = scanner.nextLine();
+        boolean tryagain=true;
+        do{
         
         Usuario user = new Usuario(nombre, 0, 0);
         Usuario compu = new Usuario("Computadora", 0, 0);
         
+        System.out.println(nombre + " este es tu tablero con tus barcos");
+        user.mostrar();
+        
         boolean again = true;
         
+        System.out.println();
+        compu.tablero.tablerou();
+        
         do {
-            System.out.println(nombre + " este es tu tablero con tus barcos");
-            user.mostrar();
             
             System.out.println("Turno de " + nombre);
             compu.tablero.tablerom();
@@ -35,27 +42,53 @@ public class ExposicionProgra {
             
             if (acierto) {
                 System.out.println("Acertaste.");
-                System.out.println(user.toString());
+                System.out.println("Ganaste 100 puntos");
+                System.out.println();
+                user.puntuacion+=100;
+                barcoshund++;
             } else {
                 System.out.println("Fallaste! Ahora es el turno de la computadora.");
-                boolean aciertoCompu = user.tablero.ataque(fila, columna, compu);
+                System.out.println("Perdiste 10 puntos");
+                user.puntuacion-=10;
+                boolean aciertoCompu;
                 
-                if (aciertoCompu) {
-                    System.out.println("La computadora acerto.");
-                } else {
-                    System.out.println("La computadora fallo.");
-                }
+                do{
+                    
+                    aciertoCompu = compu.tablero.ataquecompu(user);
+                    if(aciertoCompu){
+                        System.out.println("La computadra acerto");
+                        System.out.println("Turno de la computadora: ");
+                    }
+                    else{
+                        System.out.println("La computadora fallo");
+                    }
+                    System.out.println("Este es tu tablero actualizado: ");
+                    user.tablero.tablerou();
+                    
+                }while(aciertoCompu);
                
             }
 
             if (user.win()) {
                 System.out.println(nombre + " has ganado.");
-                again = false;
+                user.setRondas_ganadas(user.getRondas_ganadas()+1);
+                again=false;
             } else if (compu.win()) {
                 System.out.println("La computadora ha ganado.");
-                again = false;
+                again=false;
             }
-
+            
         } while (again);
+        System.out.println("Deseas volver a jugar [s/n]: ");
+                String resp = scanner.next();
+                if (resp.equalsIgnoreCase("s")){
+                    tryagain=true;
+                }
+                else{
+                    System.out.println(user.toString()+", barcos_hundidos="+ barcoshund);
+                    tryagain=false;
+                }
+    }while(tryagain);
+        
     }
 }

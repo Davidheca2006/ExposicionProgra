@@ -73,11 +73,25 @@ import java.util.Random;
             return true;
         } else if (tablero[row][col] == ' ') {
             maquina[row][col] = '-';
-            usuario.tablero.tablero[row][col]='-';
             return false;
         }
         
         return false;
+    }
+    
+    public boolean ataquecompu(Usuario usuario){
+        Random m = new Random();
+        int fila = m.nextInt(rows);
+        int columna = m.nextInt(columns);
+        
+        if (usuario.tablero.tablero[fila][columna] == '*') {
+            usuario.tablero.tablero[fila][columna] = 'X';
+            return true;
+        }else{
+            usuario.tablero.tablero[fila][columna] = '-';
+            return false;
+        }
+        
     }
 
     public int getBarcos_restantes() {

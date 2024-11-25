@@ -28,7 +28,7 @@ package exposicionprogra;
     }
 
     public boolean win() {
-        return barcos_hundidos >= 3;  
+        return barcos_hundidos==3;  
     }
 
     public void barcohundido() {
@@ -38,6 +38,16 @@ package exposicionprogra;
     public int getBarcosHundidos() {
         return barcos_hundidos;
     }
+
+    public int getRondas_ganadas() {
+        return rondas_ganadas;
+    }
+
+    public void setRondas_ganadas(int rondas_ganadas) {
+        this.rondas_ganadas = rondas_ganadas;
+    }
+    
+    
     
     //metodo
     public void setBarcosHundidos(int barcos_hundidos) {
@@ -47,6 +57,6 @@ package exposicionprogra;
     //to string
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", puntuacion=" + puntuacion + ", barcos_hundidos=" + barcos_hundidos + ", rondas_ganadas=" + rondas_ganadas + '}';
+        return "Usuario{" + "nombre=" + nombre + ", puntuacion=" + puntuacion + ", rondas_ganadas=" + rondas_ganadas + '}';
     }
 }
