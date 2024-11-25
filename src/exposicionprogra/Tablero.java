@@ -7,12 +7,14 @@ package exposicionprogra;
 import java.util.Random;
 
  public class Tablero {
+     //atributos
     int rows;
     int columns;
     char[][] tablero;
     char[][] maquina;
     int barcos_restantes;
-
+    
+    //constructor
     public Tablero(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -21,7 +23,7 @@ import java.util.Random;
         this.barcos_restantes = 3;
         inicio();
     }
-
+    //metodos
     private void inicio() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -93,7 +95,41 @@ import java.util.Random;
         }
         
     }
+    //setter y getters
 
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public char[][] getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(char[][] tablero) {
+        this.tablero = tablero;
+    }
+
+    public char[][] getMaquina() {
+        return maquina;
+    }
+
+    public void setMaquina(char[][] maquina) {
+        this.maquina = maquina;
+    }
+    
+    
     public int getBarcos_restantes() {
         return barcos_restantes;
     }
@@ -101,7 +137,8 @@ import java.util.Random;
     public void setBarcos_restantes(int barcos_restantes) {
         this.barcos_restantes = barcos_restantes;
     }
-
+    
+    //tostring
     @Override
     public String toString() {
         return "Tablero{" + "rows=" + rows + ", columns=" + columns + ", barcos_restantes=" + barcos_restantes + '}';

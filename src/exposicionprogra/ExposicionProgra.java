@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class ExposicionProgra {
 
     public static void main(String[] args) {
+        //main
         int barcoshund=0;
         Scanner scanner = new Scanner(System.in);
         
