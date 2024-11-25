@@ -5,12 +5,14 @@
 package exposicionprogra;
 
  public class Usuario {
+     //atributos
     String nombre;
     int puntuacion;
     int barcos_hundidos;
     int rondas_ganadas;
     Tablero tablero;
-
+    
+    //constructor
     public Usuario(String nombre, int puntuacion, int rondas_ganadas) {
         this.nombre = nombre;
         this.puntuacion = puntuacion;
@@ -19,7 +21,8 @@ package exposicionprogra;
         this.tablero = new Tablero(5, 5);  
         this.tablero.colocar();  
     }
-
+    
+    //seters getters
     public void mostrar() {
         tablero.tablerou();  
     }
@@ -35,11 +38,13 @@ package exposicionprogra;
     public int getBarcosHundidos() {
         return barcos_hundidos;
     }
-
+    
+    //metodo
     public void setBarcosHundidos(int barcos_hundidos) {
         this.barcos_hundidos = barcos_hundidos;
     }
-
+    
+    //to string
     @Override
     public String toString() {
         return "Usuario{" + "nombre=" + nombre + ", puntuacion=" + puntuacion + ", barcos_hundidos=" + barcos_hundidos + ", rondas_ganadas=" + rondas_ganadas + '}';

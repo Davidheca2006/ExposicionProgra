@@ -73,8 +73,10 @@ import java.util.Random;
             return true;
         } else if (tablero[row][col] == ' ') {
             maquina[row][col] = '-';
+            usuario.tablero.tablero[row][col]='-';
             return false;
         }
+        
         return false;
     }
 

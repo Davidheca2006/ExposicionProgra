@@ -32,16 +32,20 @@ public class ExposicionProgra {
             
             boolean acierto = compu.tablero.ataque(fila, columna, user);
             
+            
             if (acierto) {
                 System.out.println("Acertaste.");
+                System.out.println(user.toString());
             } else {
                 System.out.println("Fallaste! Ahora es el turno de la computadora.");
                 boolean aciertoCompu = user.tablero.ataque(fila, columna, compu);
+                
                 if (aciertoCompu) {
                     System.out.println("La computadora acerto.");
                 } else {
                     System.out.println("La computadora fallo.");
                 }
+               
             }
 
             if (user.win()) {
